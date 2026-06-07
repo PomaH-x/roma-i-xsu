@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Рома & Ксю</title>
+  <meta name="description" content="Сайт про нас и наши отношения" />
+
+  <!-- Иконка вкладки -->
+  <link rel="icon" type="image/webp" href="images/logo/logo.webp" />
+  <link rel="apple-touch-icon" href="images/logo/logo.webp" />
+
+  <!-- Шрифты: Caveat для заголовков, Manrope для основного текста -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body>
+
+  <!-- Кастомный курсор-сердечко (только на десктопе) -->
+  <div class="heart-cursor" id="heartCursor" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="currentColor">
+      <path d="M12 21s-7-4.5-9.5-9C.5 8 3 4 7 4c2 0 3.5 1 5 3 1.5-2 3-3 5-3 4 0 6.5 4 4.5 8C19 16.5 12 21 12 21z"/>
+    </svg>
+  </div>
+
+  <!-- Шапка с навигацией (sticky) -->
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <!-- Логотип. Клик 5 раз — пасхалка -->
+      <a href="#hero" class="logo" id="logoBtn" aria-label="Рома и Ксю">
+        <img src="images/logo/logo.webp" alt="Рома и Ксю" class="logo-img" />
+      </a>
+
+      <!-- Десктоп-навигация -->
+      <nav class="nav-desktop" aria-label="Основная навигация">
+        <a href="#counter" data-nav>Вместе</a>
+        <a href="#meet" data-nav>Знакомство</a>
+        <a href="#timeline" data-nav>История</a>
+        <a href="#cards" data-nav>О&nbsp;нас</a>
+        <a href="#myth" data-nav>Игра</a>
+        <a href="#quotes" data-nav>Цитаты</a>
+        <a href="#gallery" data-nav>Фото</a>
+        <a href="#wheel" data-nav>Колесо</a>
+        <a href="#playlist" data-nav>Музыка</a>
+        <a href="#wishes" data-nav>Желания</a>
+      </nav>
+
+      <!-- Бургер для мобильных -->
+      <button class="nav-toggle" id="navToggle" aria-label="Меню" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Мобильное меню — вне <header>, иначе backdrop-filter ломает position:fixed -->
+  <nav class="nav-mobile" id="navMobile" aria-label="Мобильная навигация">
+    <a href="#counter" data-nav>Вместе</a>
+    <a href="#meet" data-nav>Знакомство</a>
+    <a href="#timeline" data-nav>История</a>
+    <a href="#cards" data-nav>О нас</a>
+    <a href="#myth" data-nav>Игра</a>
+    <a href="#quotes" data-nav>Цитаты</a>
+    <a href="#gallery" data-nav>Фото</a>
+    <a href="#wheel" data-nav>Колесо</a>
+    <a href="#playlist" data-nav>Музыка</a>
+    <a href="#wishes" data-nav>Желания</a>
+  </nav>
+
+  <main>
+
+    <!-- ============== HERO ============== -->
+    <section class="hero" id="hero">
+      <div class="hero-decor hero-decor-1" aria-hidden="true"></div>
+      <div class="hero-decor hero-decor-2" aria-hidden="true"></div>
+
+      <div class="hero-grid">
+        <div class="hero-photo hero-photo-left reveal" data-parallax="0.05">
+          <!-- Замени на свою фотку: images/hero/photo-left.jpg -->
+          <img src="images/hero/photo-left.jpg" alt="Ксюша" onerror="this.classList.add('img-placeholder')" />
+        </div>
+
+        <div class="hero-title-wrap reveal">
+          <p class="hero-eyebrow">наш маленький уголок интернета</p>
+          <h1 class="hero-title">
+            <span>Рома</span>
+            <span class="amp">&amp;</span>
+            <span>Ксю</span>
+          </h1>
+          <a href="#timeline" class="hero-cta">Полистать историю ↓</a>
+        </div>
+
+        <div class="hero-photo hero-photo-right reveal" data-parallax="-0.05">
+          <!-- Замени на свою фотку: images/hero/photo-right.jpg -->
+          <img src="images/hero/photo-right.jpg" alt="Рома" onerror="this.classList.add('img-placeholder')" />
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============== СЧЁТЧИК ============== -->
+    <section class="section counter" id="counter">
+      <div class="container narrow">
+        <h2 class="section-title reveal">Вместе уже…</h2>
+
+        <div class="counter-grid reveal">
+          <div class="counter-cell">
+            <div class="counter-num" id="cntDays">0</div>
+            <div class="counter-label">дней</div>
+          </div>
+          <div class="counter-cell">
+            <div class="counter-num" id="cntHours">0</div>
+            <div class="counter-label">часов</div>
+          </div>
+          <div class="counter-cell">
+            <div class="counter-num" id="cntMinutes">0</div>
+            <div class="counter-label">минут</div>
+          </div>
+          <div class="counter-cell">
+            <div class="counter-num" id="cntSeconds">0</div>
+            <div class="counter-label">секунд</div>
+          </div>
+        </div>
+
+        <p class="counter-since reveal">с 20 ноября 2022, 12:00</p>
+      </div>
+    </section>
+
+ 
+    <!-- ============== КАК МЫ ВСТРЕТИЛИСЬ ============== -->
+    <section class="section meet" id="meet">
+      <div class="container">
+        <h2 class="section-title reveal">Как мы встретились</h2>
+
+        <div class="meet-list" id="meetList">
+          <!-- Блоки рендерятся из data.js (чередуются текст слева / текст справа) -->
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============== ТАЙМЛАЙН ============== -->
+    <section class="section timeline" id="timeline">
+      <div class="container">
+        <h2 class="section-title reveal">Наша история</h2>
+
+        <div class="timeline-wrap reveal">
+          <button class="timeline-arrow timeline-prev" id="tlPrev" aria-label="Назад">←</button>
+
+          <div class="timeline-viewport">
+            <div class="timeline-track" id="tlTrack">
+              <!-- Слайды рендерятся из data.js -->
+            </div>
+          </div>
+
+          <button class="timeline-arrow timeline-next" id="tlNext" aria-label="Вперёд">→</button>
+        </div>
+
+        <!-- Временная линия снизу -->
+        <div class="timeline-line reveal">
+          <div class="timeline-line-bar" id="tlBar"></div>
+          <div class="timeline-line-dots" id="tlDots">
+            <!-- Точки рендерятся из data.js -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============== КАРТОЧКИ Р vs К ============== -->
+    <section class="section cards" id="cards">
+      <div class="container">
+        <h2 class="section-title reveal">Ксю и Рома</h2>
+
+        <div class="cards-grid">
+          <!-- Карточка Ксю -->
+          <article class="profile-card reveal" data-person="ksyu">
+            <div class="profile-photo">
+              <img src="images/cards/ksyu.webp" alt="Ксюша" onerror="this.classList.add('img-placeholder')" />
+            </div>
+            <h3 class="profile-name">Ксю</h3>
+            <p class="profile-desc" id="ksyuDesc">
+              <!-- Описание из data.js -->
+            </p>
+            <ul class="profile-traits" id="ksyuTraits">
+              <!-- Характеристики из data.js -->
+            </ul>
+          </article>
+
+          <!-- Карточка Ромы -->
+          <article class="profile-card reveal" data-person="roma">
+            <div class="profile-photo">
+              <img src="images/cards/roma.webp" alt="Рома" onerror="this.classList.add('img-placeholder')" />
+            </div>
+            <h3 class="profile-name">Рома</h3>
+            <p class="profile-desc" id="romaDesc">
+              <!-- Описание из data.js -->
+            </p>
+            <ul class="profile-traits" id="romaTraits">
+              <!-- Характеристики из data.js -->
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============== ПРАВДА ИЛИ МИФ ============== -->
+    <section class="section myth" id="myth">
+      <div class="container narrow">
+        <h2 class="section-title reveal">Правда или миф?</h2>
+
+        <div class="game-card reveal" id="mythCard">
+          <p class="game-statement" id="mythStatement">Загрузка…</p>
+          <div class="game-buttons" id="mythButtons">
+            <button class="game-btn game-btn-true" data-answer="true">Правда</button>
+            <button class="game-btn game-btn-false" data-answer="false">Миф</button>
+          </div>
+          <p class="game-result" id="mythResult"></p>
+          <button class="game-next" id="mythNext">Ещё факт →</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============== УГАДАЙ, КТО СКАЗАЛ ============== -->
+    <section class="section quotes" id="quotes">
+      <div class="container narrow">
+        <h2 class="section-title reveal">Угадай, кто сказал</h2>
+
+        <div class="game-card reveal" id="quoteCard">
+          <div class="quote-frame">
+            <span class="quote-mark quote-mark-open" aria-hidden="true">«</span>
+            <p class="game-statement quote-text" id="quoteText">Загрузка…</p>
+            <span class="quote-mark quote-mark-close" aria-hidden="true">»</span>
+          </div>
+          <div class="game-buttons" id="quoteButtons">
+            <button class="game-btn game-btn-roma" data-answer="roma">Рома</button>
+            <button class="game-btn game-btn-ksyu" data-answer="ksyu">Ксю</button>
+          </div>
+          <p class="game-result" id="quoteResult"></p>
+          <button class="game-next" id="quoteNext">Следующая цитата →</button>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============== ФОТОГАЛЕРЕЯ ============== -->
+    <section class="section gallery" id="gallery">
+      <div class="container">
+        <h2 class="section-title reveal">Фотографии</h2>
+
+        <div class="gallery-grid" id="galleryGrid">
+          <!-- Картинки рендерятся из data.js -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Лайтбокс -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lb-close" id="lbClose" aria-label="Закрыть">×</button>
+      <button class="lb-arrow lb-prev" id="lbPrev" aria-label="Предыдущее фото">‹</button>
+      <button class="lb-arrow lb-next" id="lbNext" aria-label="Следующее фото">›</button>
+      <div class="lb-imgwrap">
+        <img id="lbImage" src="" alt="" />
+      </div>
+      <div class="lb-counter" id="lbCounter"></div>
+    </div>
+
+
+    <!-- ============== КОЛЕСО СВИДАНИЙ ============== -->
+    <section class="section wheel" id="wheel">
+      <div class="container narrow">
+        <h2 class="section-title reveal">Колесо свиданий</h2>
+
+        <div class="wheel-wrap reveal">
+          <div class="wheel-pointer" aria-hidden="true">▼</div>
+          <svg class="wheel-svg" id="wheelSvg" viewBox="-220 -220 440 440">
+            <g id="wheelG"></g>
+            <circle r="20" fill="var(--lilac)" stroke="var(--orchid)" stroke-width="4" />
+          </svg>
+        </div>
+
+        <button class="wheel-btn" id="wheelBtn">Крутить колесо</button>
+      </div>
+    </section>
+
+    <!-- Модалка свидания -->
+    <div class="modal" id="dateModal" aria-hidden="true">
+      <div class="modal-backdrop" data-close></div>
+      <div class="modal-card">
+        <button class="modal-close" data-close aria-label="Закрыть">×</button>
+        <p class="modal-eyebrow">выпала идея</p>
+        <h3 class="modal-title" id="dateTitle"></h3>
+        <p class="modal-desc" id="dateDesc"></p>
+        <button class="modal-action" id="dateSpinAgain">Крутить ещё раз ↻</button>
+      </div>
+    </div>
+
+
+    <!-- ============== ПЛЕЙЛИСТ ============== -->
+    <section class="section playlist" id="playlist">
+      <div class="container">
+        <h2 class="section-title reveal">Что мы слушаем</h2>
+
+        <div class="playlist-cols">
+          <div class="playlist-col reveal">
+            <h3 class="playlist-name">Любимое у&nbsp;Ксю</h3>
+            <ul class="track-list" id="ksyuTracks"></ul>
+          </div>
+          <div class="playlist-col reveal">
+            <h3 class="playlist-name">Любимое у&nbsp;Ромы</h3>
+            <ul class="track-list" id="romaTracks"></ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- ============== ДОСКА ЖЕЛАНИЙ ============== -->
+    <section class="section wishes" id="wishes">
+      <div class="container">
+        <h2 class="section-title reveal">Доска желаний</h2>
+
+        <div class="wishes-grid" id="wishesGrid">
+          <!-- Желания рендерятся из data.js -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+  <!-- ============== ФУТЕР ============== -->
+  <footer class="site-footer">
+    <div class="container">
+      <h2 class="footer-title">На связи <span class="footer-icon" aria-hidden="true">🤙</span></h2>
+      <div class="socials">
+        <a class="social" href="https://t.me/mishkavtanke" target="_blank" rel="noopener">
+          <span class="social-name">Рома</span>
+        </a>
+        <a class="social" href="https://t.me/kotletka1313" target="_blank" rel="noopener">
+          <span class="social-name">Ксю</span>
+        </a>
+      </div>
+
+      <p class="footer-credit">
+        Сделано с любовью <span class="footer-heart">♥</span> и Claude Code Opus 4.7
+      </p>
+    </div>
+  </footer>
+
+
+  <!-- Оверлей пасхалки -->
+  <div class="easter-overlay" id="easterOverlay" aria-hidden="true">
+    <button class="easter-close" id="easterClose" aria-label="Закрыть">×</button>
+    <img id="easterImage" src="images/secret/secret.jpg" alt="" />
+    <p class="easter-caption">Ты нашёл нас 💛</p>
+  </div>
+
+
+  <script src="scripts/data.js"></script>
+  <script src="scripts/main.js"></script>
+</body>
+</html>
