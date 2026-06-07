@@ -836,6 +836,14 @@ body.menu-open .site-header {
   75% { transform: translateX(-4px); }
 }
 
+@media (max-width: 720px) {
+  .cards-grid { padding: 15px 20px; }
+
+   .game-statement { max-width: 213px; }
+   .quote-frame { display: flex;
+    justify-content: center; }
+}
+
 .quote-frame {
   position: relative;
   padding: 18px 36px 24px;
