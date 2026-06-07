@@ -757,7 +757,6 @@ body.menu-open .site-header {
 .profile-card[data-person="ksyu"] .profile-name { color: var(--orchid); }
 
 .profile-desc {
-  text-align: center;
   color: var(--ink-soft);
   margin: 0 0 24px;
   font-style: italic;
